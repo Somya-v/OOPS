@@ -1,0 +1,81 @@
+import java.awt.Color;
+
+public class Tree {
+
+	//these are instance/non static members
+	//we need to have an instance to access them
+	
+	private int height;
+	private int diameter;
+	private TreeTypes treeType;
+	
+	//static variable: use class name to access it
+	static Color trunkColor= new Color(57,0,0);
+
+	
+	public Tree(int height, int diameter, TreeTypes treeType) {
+
+		this.height = height;
+		this.diameter = diameter;
+		this.treeType = treeType;
+
+	}
+
+	//cannot rely on instance variables/methods
+	static void announceTree() {
+		System.out.println("This is a tree");
+	}
+	public void setHeight(int height) {
+
+		this.height = height;
+	}
+
+	public int getHeight() {
+		return height;
+
+	}
+
+	public void setDiameter(int diameter) {
+		this.diameter = diameter;
+	}
+
+	public int getDiameter() {
+		return diameter;
+
+	}
+
+	public TreeTypes gettreeType() {
+		return treeType;
+
+	}
+
+	public void grow() {
+		this.diameter = this.diameter + 2;
+		this.height = this.height + 10;
+	}
+
+	public void tallTree() {
+		if (this.height > 100) {
+			System.out.println(this.treeType + " is a tall tree");
+		} else {
+			System.out.println(this.treeType + " is not a tall tree");
+		}
+	}
+}
+
+//Main Tree
+
+package practice;
+
+public class MainTree {
+
+	public static void main(String[] args) {
+
+		Tree tree1= new Tree(1001, 10, TreeTypes.FERNS);
+		tree1.grow();
+		tree1.tallTree();
+		
+	}
+
+}
+
