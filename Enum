@@ -1,0 +1,16 @@
+public enum TreeTypes {
+
+	MAPLE(91),
+	PALM(88),
+	SILVERFIR(89),
+	FERNS(92),
+	PINE(83),
+	BIRCH(70),
+	JUNIPER(74);
+	
+	final int levelOfBeauty;
+	
+	TreeTypes(int levelOfBeauty){
+		this.levelOfBeauty=levelOfBeauty;
+	}
+}
