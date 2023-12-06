@@ -10,6 +10,6 @@ public enum TreeTypes {
 	
 	final int levelOfBeauty;	
 	TreeTypes(int levelOfBeauty){
-		this.levelOfBeauty=levelOfBeauty;
+	     this.levelOfBeauty=levelOfBeauty;
 	}
 }
