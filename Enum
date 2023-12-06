@@ -8,8 +8,7 @@ public enum TreeTypes {
 	BIRCH(70),
 	JUNIPER(74);
 	
-	final int levelOfBeauty;
-	
+	final int levelOfBeauty;	
 	TreeTypes(int levelOfBeauty){
 		this.levelOfBeauty=levelOfBeauty;
 	}
