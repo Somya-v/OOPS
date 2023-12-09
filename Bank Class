@@ -1,0 +1,46 @@
+public class Bank {
+
+	private final double accountNumber;
+	private String owner;
+	private double balance;
+
+	public Bank(String owner, double balance, double accountNumber) {
+		this.accountNumber = accountNumber;
+		this.owner = owner;
+		this.balance = Math.max(balance, 0);
+	}
+	
+	public double getAccountNumber() {
+		return this.accountNumber;
+	}
+
+	public String getOwnerName() {
+		return this.owner;
+	}
+
+	public double getBalance() {
+		return this.balance;
+	}
+
+	public void deposit(double amount) {
+
+		if(amount>0)
+		this.balance = this.balance + amount;
+		else {
+			System.out.println("deposit a valid amount");
+		}
+	}
+	
+	public void withdraw(double amount) {
+
+		if(amount<=this.balance) {
+			this.balance = this.balance - amount;
+		}
+		else {
+			System.out.println("insufficient balance");
+		}
+	}
+
+}
+
+
