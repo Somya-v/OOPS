@@ -1,0 +1,17 @@
+-> developers may accidentally introduce issues known as code smells. 
+-> Code smells are indicators or warning signs in your code that suggest potential problems. They do not necessarily indicate a bug, but rather areas where the code could be improved. 
+-> One example of this is class bloat. Class bloat happens when a class becomes too large and handles many responsibilities. 
+-> A large class can be challenging to maintain and understand because we might not understand the side effects it has or what could break by changing it. 
+-> It's important to consider refactoring it into smaller classes. 
+-> This is also the case for long methods. 
+-> A given software application should have many small components, each with their own independent responsibilities. 
+-> Large components can be difficult to read and understand. Another example of a code smell is a god object. A god object is a class that knows and does too much. 
+-> It often has many attributes and methods, making it a single point of failure for the application. This could be seen in combination with class bloat.
+-> One of the five solid principles of object-oriented programming in design is the single responsibility principle. 
+-> This states that a class or module should have a single, well-defined responsibility or job within a software system, encapsulating a single piece of functionality.
+-> It should not be responsible for multiple unrelated tasks. By following this principle, your code will avoid having these code smells relating to large classes. 
+-> The last code smell we'll cover is called feature envy. This happens when a method in one class has a strong interest in the internal details or attributes of another class, more so than in its own class. 
+-> If a given method frequently accesses or manipulates the properties of another class, it creates excessive coupling, making the two classes less independent. There's a few options to fix this. 
+->One is to move the method over to the class it envies. Another is to create an interface to better define a contract between the two classes, so the one relies less on the internal details of the other. 
+-> Which refactoring option you choose will depend on the design of your code base and the scenario. 
+-> Ultimately, identifying code smells early and creating a plan to address them can help you maintain a high standard of code quality.
