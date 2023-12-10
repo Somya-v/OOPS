@@ -1,0 +1,97 @@
+ -> a class can implement multiple interfaces. If you need a class to adhere to multiple contracts, interfaces are a suitable choice.
+
+// in the following code, Abstraction is shown using interface. 
+
+//Event Interface
+
+public interface Event {
+
+	public long getTimeStamp();
+	public void process();
+	
+}
+
+// PasswordChangerEvent Class
+
+import java.sql.Timestamp;
+
+public class PasswordChangerEvent implements Event{
+
+	private final Long createdTimeStamp;
+	private final String id;
+	
+	public PasswordChangerEvent(String id) {
+		this.id= id;
+		this.createdTimeStamp= new Timestamp(System
+				.currentTimeMillis())
+				.getTime();
+	}
+	@Override
+	public long getTimeStamp() {
+
+		return this.createdTimeStamp;
+	}
+
+	@Override
+	public void process() {
+		System.out.println("customer "+id+" changed their password. sending a confirmation email to the customer");
+		
+	}
+	
+}
+
+//MissedPaymentEvent Class
+import java.sql.Timestamp;
+
+public class MissedPaymentEvent implements Event{
+
+	private final Long createdTimeStamp;
+	private final String id;
+	
+	public MissedPaymentEvent(String id) {
+		this.createdTimeStamp= new Timestamp(System.currentTimeMillis()).getTime();
+		this.id = id;
+		
+
+	}
+	@Override
+	public long getTimeStamp() {
+		return this.createdTimeStamp;
+	}
+
+	@Override
+	public void process() {
+		System.out.println("customer "+id+" missed their payment. sending a info email to the customer");
+		
+	}
+
+}
+
+//AccountTransferEvent Class
+
+import java.sql.Timestamp;
+
+public class AccountTransferEvent implements Event {
+
+	private final Long createdTimeStamp;
+	private final String id;
+	
+	public AccountTransferEvent(String id) {
+		this.createdTimeStamp= new Timestamp(System.currentTimeMillis()).getTime();
+		this.id = id;
+		
+
+	}
+	@Override
+	public long getTimeStamp() {
+		return this.createdTimeStamp;
+	}
+
+	@Override
+	public void process() {
+		System.out.println("customer "+id+" transferred their account. sending a confirmation email to the customer");
+		
+	}
+}
+
+
