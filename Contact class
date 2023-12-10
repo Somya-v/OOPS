@@ -1,7 +1,6 @@
-The idea that an object can use functionality from different classes depending on the context is a key idea that's essential to understanding polymorphism. 
-Overloaded methods are faster because they are bonded during compile-time, which is an earlier phase than runtime. 
-They also keep everything in one place, while with overridden methods you might be jumping all over the place in your code. 
-Ultimately, it depends on your use case and you'll likely need both.
+-> The idea that an object can use functionality from different classes depending on the context is a key idea that's essential to understanding polymorphism. 
+-> Overloaded methods are faster because they are bonded during compile-time, which is an earlier phase than runtime. 
+-> They also keep everything in one place, while with overridden methods you might be jumping all over the place in your code. 
 
 //contact class
 public class Contact {
