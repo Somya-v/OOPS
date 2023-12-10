@@ -1,0 +1,82 @@
+//event Interface
+public interface Event {
+	
+	public void process();
+	public long getTimeStamp();
+
+}
+
+//AbstractEvent  Class
+import java.sql.Timestamp;
+
+public abstract class AbstractEvent implements Event {
+
+	protected Long createdTimeStamp;
+	protected String id;
+
+	public AbstractEvent(String id) {
+		this.id = id;
+		this.createdTimeStamp = new Timestamp(System.currentTimeMillis()).getTime();
+	}
+
+	@Override
+	public long getTimeStamp() {
+		return this.createdTimeStamp;
+	}
+
+	public abstract void process();
+}
+
+
+//PasswordChangerEvent Class
+import java.sql.Timestamp;
+
+public class PasswordChangerEvent extends AbstractEvent {
+
+	public PasswordChangerEvent(String id) {
+		super(id);
+	}
+
+	public void process() {
+		System.out.println(
+				"customer " + super.id + " changed their password. sending a confirmation email to the customer");
+
+	}
+
+}
+
+//MissedPaymentEvent class
+import java.sql.Timestamp;
+
+public class MissedPaymentEvent extends AbstractEvent{
+
+	public MissedPaymentEvent(String id) {
+		super(id);
+	}
+
+	@Override
+	public void process() {
+		System.out.println("customer "+super.id+" missed their payment. sending a info email to the customer");
+		
+	}
+
+}
+
+// AccountTransferEventpackage Class
+
+import java.sql.Timestamp;
+
+public class AccountTransferEvent extends AbstractEvent {
+
+	public AccountTransferEvent(String id) {
+		super(id);
+
+	}
+
+	@Override
+	public void process() {
+		System.out
+				.println("customer " + id + " transferred their account. sending a confirmation email to the customer");
+
+	}
+}
