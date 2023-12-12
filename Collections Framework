@@ -1,0 +1,77 @@
+->a Collection is a top-level interface in the Java Collections Framework. 
+  It is the root interface for all the other collection interfaces (such as List, Set, and Queue).
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
+public class RoomMain {
+
+	public static void main(String[] args) {
+
+		Room room1 = new Room("Talia", "queen", 2, 9999, false);
+		Room room2 = new Room("Haden", "Family Suite", 4, 20999, false);
+		Room room3= new Room("Renee", "single", 1, 7000, false);
+
+//		a Collection is a top-level interface in the Java Collections Framework.
+//		It is the root interface for all the other collection interfaces (such as List, Set, and Queue).
+		
+		//generic type, can take objects
+		Collection<Room> rooms = List.of(room1, room2, room3);
+		double total = getRevenue(rooms);
+		System.out.println(total);
+		
+		Collection<Room> c= new ArrayList<>(Arrays.asList(room1, room2, room3));
+
+		for (Room room : c) {
+			System.out.println(room.getName());
+		}
+	}
+
+	private static double getRevenue(Collection<Room> rooms) {
+		return rooms.stream()    //While streams in Java share some similarities with loops in terms of iterating over elements, they represent a higher-level abstraction with a different programming paradigm
+				.mapToDouble(r->r.getRate()) // converts the rates to doubles using mapToDouble()
+				.sum();
+
+	}
+	
+}
+
+
+
+-> In Java, there are two main ways to compare objects. 
+-> Identity-based (obj1==obj2)- When comparing objects by identity, we check to see if two objects have references to the same object in memory. When you use Java's equality operator, 
+this is the type of check that occurs. 
+-> value-based (obj1.equals(obj2)) - Comparing objects by value is a test of whether two objects are logically equivalent. It relies upon their field values, instead of their memory addresses 
+to perform this comparison. In Java, we override the equals method on an object to establish the logic for this comparison. 
+->  working with collections, we donot want identity based comparison.
+
+
+
+-> Collections cannot be modified while getting iterated, for example in below code if tried, java.util.ConcurrentModificationException is thrown
+
+		room1.setPetFriendly(true);
+
+		Collection<Room> c = new ArrayList<>(Arrays.asList(room1, room2, room3));
+
+		for (Room room : c) {
+			if (room.getPetFriendly()) {
+				c.remove(room);
+			}
+		}
+		c.stream().forEach(r -> System.out.println(r.getName()));
+
+->Two ways to avoid this
+-> 1. create a new arraylist that consists of pet friendly rooms and invoke removeAll method on the collection.
+->2. use an intertor
+
+		Iterator<Room> iterator= rooms.iterator();
+		while (iterator.hasNext()) {
+			Room room = iterator.next();
+			if (room.getPetFriendly()) {
+				iterator.remove();
+			}
+			
+		}
+
