@@ -1,0 +1,89 @@
+public class Book {
+	private String name;
+	private String id;
+	private String genre;
+
+	public Book(String name, String id, String genre) {
+		this.name = name;
+		this.id = id;
+		this.genre = genre;
+	}
+	public String getName() {
+		return this.name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getId() {
+		return this.id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getGenre() {
+		return this.genre;
+	}
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+	@Override
+	public String toString() {
+		return "Book [name=" + name + ", id=" + id + ", genre=" + genre + "]";
+	}
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class BookDao {
+
+	public List<Book> getBooks() {
+		List<Book> books = new ArrayList<>();
+		books.add(new Book("Alpha1", "SF223", "Sci-fi"));
+		books.add(new Book("Beta1", "HR679", "Horror"));
+		books.add(new Book("Gamma1", "TH342", "Thriller"));
+		books.add(new Book("Delta1", "RC456", "RomCom"));
+
+		return books;
+	}
+}
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+public class BookService {
+	public List<Book> GetBooksInSortedOrder() {
+		List<Book> books = new BookDao().getBooks();
+//		Collections.sort(books, new MyComparator());
+
+		// anonymous class way
+		/*
+		 * Collections.sort(books, new Comparator<Book>() {
+		 * 
+		 * @Override public int compare(Book o1, Book o2) { return
+		 * o2.getGenre().compareTo(o1.getGenre()); } });
+		 */
+
+		// Lambda func
+		Collections.sort(books, (o1, o2) -> o1.getGenre().compareTo(o2.getGenre()));
+
+		return books;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(new BookService().GetBooksInSortedOrder());
+	}
+}
+//we can do it using lambda exp.
+/*
+ * class MyComparator implements Comparator<Book> {
+ * 
+ * @Override public int compare(Book o1, Book o2) {
+ * 
+ * return o1.getGenre().compareTo(o2.getGenre()); }
+ * 
+ * }
+ */
+
